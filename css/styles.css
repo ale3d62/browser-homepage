@@ -7,6 +7,9 @@
   --containerBg: #272727;
   --searchBg: var(--containerBg);
   --scrollbarColor: #3f3f3f;
+
+  --inputBg: #363636;
+  --inputHoverBg: #404040;
   --fontFamily: 'Roboto Mono', monospace;
 }
 
@@ -173,4 +176,20 @@ body {
   font-size: 0.85rem;
   color: var(--fg);
   mix-blend-mode: difference;
+}
+
+
+.button{
+  background-color: var(--inputBg);
+  color: var(--secondaryFg);
+  border-radius: 3px;
+  border: none;
+  transition: opacity 100ms ease-in-out,
+              color 100ms ease-in-out;
+}
+.button:hover{
+  background-color: var(--inputHoverBg);
+  color: white;
+  cursor:pointer;
+  transition: color 100ms ease-in-out;
 }

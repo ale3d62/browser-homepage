@@ -112,6 +112,7 @@ function createTodoElement(todoElementText){
     const todoRowDiv = document.createElement("div");
     todoRowDiv.id = todoElementText+"_container";
     todoRowDiv.className = "todo-element-container";
+
     const todoRowText = document.createElement("p");
     todoRowText.innerText = todoElementText;
     todoRowText.className = "todo-element-text inline";
@@ -152,6 +153,17 @@ function createTodoElement(todoElementText){
             console.error("Error en la solicitud HTTP:", error);
         }
     });
+
+    //div hover detection
+    todoRowDiv.addEventListener('mouseenter', function() {
+        console.log("hovered");
+        editButton.classList.remove('todo-element-button');
+        void editButton.offsetWidth; // trigger reflow
+        editButton.classList.add('todo-element-button');
+        deleteButton.classList.remove('todo-element-button');
+        void deleteButton.offsetWidth; // trigger reflow
+        deleteButton.classList.add('todo-element-button');
+    })
 
     
     todoRowDiv.appendChild(deleteButton);

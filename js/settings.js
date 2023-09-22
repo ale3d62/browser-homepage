@@ -60,7 +60,7 @@ function createWledDeviceText(newDeviceContainer, device){
     newDeviceIpText.innerText = device.ip;
     newDeviceIpText.className = "wled-device-text";
     const newDeviceDeleteButton = document.createElement("button");
-    newDeviceDeleteButton.className = "wled-device-button";
+    newDeviceDeleteButton.className = "button wled-device-input-button";
     const newDeviceDeleteButtonIcon = document.createElement("i");
     newDeviceDeleteButtonIcon.className = "fa fa-trash";
     newDeviceDeleteButton.appendChild(newDeviceDeleteButtonIcon);
@@ -95,12 +95,12 @@ wledAddButton.addEventListener("click", function(){
     newDeviceIpInput.className = "wled-device-input";
     newDeviceIpInput.placeholder = "ip";
     const newDeviceConfirmButton = document.createElement("button");
-    newDeviceConfirmButton.className = "wled-device-button";
+    newDeviceConfirmButton.className = "button wled-device-input-button";
     const newDeviceConfirmButtonIcon = document.createElement("i");
     newDeviceConfirmButtonIcon.className = "fa fa-check";
     newDeviceConfirmButton.appendChild(newDeviceConfirmButtonIcon);
     const newDeviceCancelButton = document.createElement("button");
-    newDeviceCancelButton.className = "wled-device-button";
+    newDeviceCancelButton.className = "button wled-device-input-button";
     const newDeviceCancelButtonIcon = document.createElement("i");
     newDeviceCancelButtonIcon.className = "fa fa-close";
     newDeviceCancelButton.appendChild(newDeviceCancelButtonIcon);

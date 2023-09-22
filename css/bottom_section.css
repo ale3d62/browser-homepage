@@ -1,5 +1,11 @@
 /*BOTTOM SECTION*/
 
+:root {
+  --serverGreen: #49b02c;
+  --serverRed: red;
+}
+
+
 .bottom-section{
 
     width: 40%;
@@ -10,7 +16,6 @@
   
   }
   
-  /*modified by me to be compatible with bottom-section*/
   .bottom-container {
     width: 85%;
     background-color: var(--containerBg);
@@ -22,6 +27,7 @@
     text-align: center;
   }
   
+  /* SERVER STATUS */
   .server-status-container{
     padding: 1em;
     background-color: var(--containerBg);
@@ -38,28 +44,22 @@
     align-items: center;
   }
   
-  
-  
   .server-status-text{
     writing-mode: vertical-rl;
   }
   
-  .red{
-    color:red;
+  .server-status-text.red{
+    color:var(--serverRed);
   }
   
-  .green{
-    color: #49b02c;
+  .server-status-text.green{
+    color: var(--serverGreen);
   }
   
-    /*TO DO*/
-  .todo-title:hover .todo-add-button{
-    visibility: visible;
-    opacity: 1;
-    transition: visibility 100ms ease-in-out,
-                opacity 100ms ease-in-out;
-  }
-  
+
+
+
+  /*TO DO*/
   .todo-title-text {
     font-size: 1.5rem;
     font-weight: 600;
@@ -67,28 +67,20 @@
     margin: 0em 0em 0.35em 0em;
   }
   
-  .todo-add-button{
-    visibility: hidden;
+  .button.todo-add-button{
     opacity: 0;
+    font-size: 1.25rem;
+    border-radius: 10px;
+  }
+
+  .todo-title:hover .todo-add-button{
+    visibility: visible;
+    opacity: 1;
     transition: visibility 100ms ease-in-out,
                 opacity 100ms ease-in-out;
-    font-size: 1.25rem;
-    background-color: var(--scrollbarColor);
-    color: var(--secondaryFg);
-    border-radius: 10px;
-    border: none;
-    transition: color 100ms ease-in-out
-                visibility 100ms ease-in-out
-                opacity 100ms ease-in-out;
-  }
-  .todo-add-button:hover{
-    color: var(--fg);
-    border-radius: 10px;
-    cursor: pointer;
   }
   
   .todo-element-container{
-    background-color: transparent;
     display:flex;
     justify-content: center;
     align-items: center;
@@ -96,14 +88,14 @@
   
   .todo-element-button{
     display: none;
+    opacity: 0;
     font-size: 0.9rem;
     background-color: transparent;
     color: var(--secondaryFg);
     border-radius: 3px;
     border: none;
     transition: color 100ms ease-in-out;
-    animation-name: display;
-    animation-duration: 2s;
+    animation: display .5s forwards;
   }
   .todo-element-button:hover{
     color: var(--fg);
@@ -113,13 +105,11 @@
   }
   
   .todo-element-container:hover .todo-element-button{
-    display: block;
+    display:block;
   }
 
-  /*unfinished, have to trigger the animation when the container is hovered and replace the above code*/
   @keyframes display {
-    from {display:none;}
-    to {display:block;}
+    to {opacity: 1;}
   }
   
   .todo-element-text{
@@ -159,20 +149,17 @@
     box-sizing: border-box;
   }
 
-  .wled-button{
-    background-color: transparent;
+  .button.wled-button{
     font-size: 1.5rem;
     filter: brightness(1);
-    border: none;
-    transition: color 100ms ease-in-out;
+    background-color: transparent;
+    transition: filter 100ms ease-in-out;
   }
-  .wled-button:hover{
-    cursor: pointer;
-    filter: brightness(1.75);
-    transition: color 100ms ease-in-out;
+  .button.wled-button:hover{
+    filter: brightness(3.5);
+    transition: filter 100ms ease-in-out;
   }
-
-  .wled-button.unavailable{
+  button.wled-button.unavailable{
     color: black;
     cursor: not-allowed;
   }

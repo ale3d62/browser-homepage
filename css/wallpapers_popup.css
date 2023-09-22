@@ -1,0 +1,55 @@
+/* WALLPAPERS POPUP*/
+.button.wallpapers-route-confirm{
+    font-size: 1.25rem;
+}
+
+
+.wallpaper-thumbs-container{
+    border-radius: 3px;
+    padding: 1em;
+    background-color: var(--inputBg);
+    overflow-y: scroll;
+    position: relative;
+    width: 95%;
+    height: calc(100% - 200px);
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbarColor);
+}
+.wallpaper-thumbs-container::-webkit-scrollbar{
+    width: 6px;
+}
+.wallpaper-thumbs-container::-webkit-scrollbar-track{
+    background: #ffffff00;
+}
+.wallpaper-thumbs-container::-webkit-scrollbar-thumb{
+    background-color: var(--scrollbarColor);
+    border-radius: 6px;
+    border: 3px solid #ffffff00;
+}
+
+.thumb{
+    border-radius: 3px;
+    margin: 0 1em 0.75em 0;
+    width: 180px;
+    height: 102px;
+    filter: brightness(80%);
+    transition: transform 100ms ease-in-out,
+                filter 100ms ease-in-out;
+}
+
+.thumb.good:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: transform 100ms ease-in-out;
+}
+
+.thumb.selected{
+    filter: brightness(100%);
+    border: 2px solid white;
+    transition: filter 100ms ease-in-out;
+}
+
+.thumb.missing:hover{
+    cursor:not-allowed;
+}

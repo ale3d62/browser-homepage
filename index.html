@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="css/bottom_section.css" />
     <link rel="stylesheet" href="css/bookmarks.css" />
     <link rel="stylesheet" href="css/popups.css" />
+    <link rel="stylesheet" href="css/extra_bookmarks_popup.css" />
+    <link rel="stylesheet" href="css/wallpapers_popup.css" />
+    <link rel="stylesheet" href="css/settings_popup.css" />
     <link href="favicon.png" rel="shortcut icon" type="image/x-icon" />
   </head>
 
@@ -28,7 +31,7 @@
           id="search-field"
           type="text"
           name="search-field"
-          onkeypress="return search(event)"
+          onkeypress="search(event)"
         />
       </div>
 
@@ -64,7 +67,7 @@
                   <div id="todo_title_text" class="todo-title-text inline">
                     To Do 📋
                   </div>
-                  <button id="todo_add_button" class="todo-add-button">+</button>
+                  <button id="todo_add_button" class="button todo-add-button">+</button>
                 </p>
               </div>
               <div id= "todo_rows">-</div>
@@ -77,84 +80,85 @@
           </div>
           <div id="wled_button_set" class = "wled-button-set"></div>
         </div>
-      </div>
+      
 
-      <!-- Popups -->
-      <!-- extra bookmarks -->
-      <div id="extra_bookmarks_popup" class="popup">
-        <div id="extra_bookmarks_popup_content" class="popup-content">
-            <button id="extra_bookmarks_popup_close_button" class="popup-close-button">
-                <i class='fa fa-close'></i>
-            </button>
-            <div id="extra_bookmarks_popup_title" class="popup-title">
-                Extra Bookmarks
-            </div>
-            <div id="extra_bookmarks_container" class="extra-bookmarks-container"></div>
+        <!-- Popups -->
+        <!-- extra bookmarks -->
+        <div id="extra_bookmarks_popup" class="popup">
+          <div id="extra_bookmarks_popup_content" class="popup-content">
+              <button id="extra_bookmarks_popup_close_button" class="button popup-close">
+                  <i class='fa fa-close'></i>
+              </button>
+              <div id="extra_bookmarks_popup_title" class="popup-title">
+                  Extra Bookmarks
+              </div>
+              <div id="extra_bookmarks_container" class="extra-bookmarks-container"></div>
+          </div>
         </div>
-      </div>
-      <!-- wallpapers -->
-      <div id="wallpapers_popup" class="popup">
-        <div id="wallpapers_popup_content" class="popup-content">
-            <button id="wallpapers_popup_close_button" class="popup-close-button">
-                <i class='fa fa-close'></i>
-            </button>
-            <div id="wallpapers_popup_title" class="popup-title">
-                Wallpapers
-            </div>
-            <div id="wallpapers_container" class="popup-inside-container">
-                <div class="text-option">
-                    <div class="text-option-title">Wallpapers Route</div>
-                    <input id="wallpapers_route" style="width: 35em;">
-                    <button id="wallpapers_route_confirm_button" class="wallpapers-route-confirm-button">
-                        <i class="fa fa-check"></i>
-                    </button>
-                </div>
-                <div id="wallpaper_thumbs_container" class="wallpaper-thumbs-container"></div>
-                <div class="checkbox-option">
-                    <div class="checkbox-option-text">Wallpaper Cycling</div>
-                    <input id="wallpaper_cycling_checkbox" type="checkbox">
-                    <span><i class="fa fa-check"></i></span>
-                </div>
-                <div class="text-option">
-                    <div class="text-option-title">Switch every</div>
-                    <input id="wallpaper_cycling_time">
-                </div>
-            </div>
+        <!-- wallpapers -->
+        <div id="wallpapers_popup" class="popup">
+          <div id="wallpapers_popup_content" class="popup-content">
+              <button id="wallpapers_popup_close_button" class="button popup-close">
+                  <i class='fa fa-close'></i>
+              </button>
+              <div id="wallpapers_popup_title" class="popup-title">
+                  Wallpapers
+              </div>
+              <div id="wallpapers_container" class="popup-inside-container">
+                  <div class="text-option">
+                      <div class="text-option-title">Wallpapers Route</div>
+                      <input id="wallpapers_route" style="width: 35em;">
+                      <button id="wallpapers_route_confirm_button" class="button wallpapers-route-confirm">
+                          <i class="fa fa-check"></i>
+                      </button>
+                  </div>
+                  <div id="wallpaper_thumbs_container" class="wallpaper-thumbs-container"></div>
+                  <div class="checkbox-option">
+                      <div class="checkbox-option-text">Wallpaper Cycling</div>
+                      <input id="wallpaper_cycling_checkbox" type="checkbox">
+                      <span><i class="fa fa-check"></i></span>
+                  </div>
+                  <div class="text-option">
+                      <div class="text-option-title">Switch every</div>
+                      <input id="wallpaper_cycling_time">
+                  </div>
+              </div>
+          </div>
         </div>
-      </div>
-      <!-- settings -->
-      <div id="settings_popup" class="popup">
-        <div id="settings_popup_content" class="popup-content">
-            <button id="settings_popup_close_button" class="popup-close-button">
-                <i class='fa fa-close'></i>
-            </button>
-            <div id="settings_popup_title" class="popup-title">
-                Settings
-            </div>
-            <div id="settings_container" class="popup-inside-container">
-                <div class="settings-section-title">Home-Server</div>
-                <div class="checkbox-option">
-                    <div class="checkbox-option-text">Connect to Home-Server</div>
-                    <input id="enable_server_checkbox" type="checkbox">
-                    <span><i class="fa fa-check"></i></span>
-                </div>
-                <div class="text-option">
-                    <div class="text-option-title">Home-Server Ip</div>
-                    <input id="server_ip_option">
-                </div>
-                <div class="text-option">
-                    <div class="text-option-title">Home-Server Port</div>
-                    <input id="server_port_option">
-                </div>
+        <!-- settings -->
+        <div id="settings_popup" class="popup">
+          <div id="settings_popup_content" class="popup-content">
+              <button id="settings_popup_close_button" class="button popup-close">
+                  <i class='fa fa-close'></i>
+              </button>
+              <div id="settings_popup_title" class="popup-title">
+                  Settings
+              </div>
+              <div id="settings_container" class="popup-inside-container">
+                  <div class="settings-section-title">Home-Server</div>
+                  <div class="checkbox-option">
+                      <div class="checkbox-option-text">Connect to Home-Server</div>
+                      <input id="enable_server_checkbox" type="checkbox">
+                      <span><i class="fa fa-check"></i></span>
+                  </div>
+                  <div class="text-option">
+                      <div class="text-option-title">Home-Server Ip</div>
+                      <input id="server_ip_option">
+                  </div>
+                  <div class="text-option">
+                      <div class="text-option-title">Home-Server Port</div>
+                      <input id="server_port_option">
+                  </div>
 
-                <div class="settings-section-title">WLED
-                    <button id="wled_add_button" class="wled-add-button">+</button>
-                </div>
-                <div id="wled_devices_container" class="wled-devices-container"></div>
+                  <div class="settings-section-title">WLED
+                      <button id="wled_add_button" class="button add-wled-device">+</button>
+                  </div>
+                  <div id="wled_devices_container"></div>
 
-                <button id="save_settings_button" class="save-settings-button">Save</button>
-                <div id="save_confirm_text" class="save-confirm-text">Saved!</div>
-            </div>
+                  <button id="save_settings_button" class="button save-settings">Save</button>
+                  <div id="save_confirm_text" class="save-confirm-text">Saved!</div>
+              </div>
+          </div>
         </div>
       </div>
 

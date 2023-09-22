@@ -108,7 +108,7 @@ async function setupWled(){
         wledButtonContainer.className = "wled-button-container";
         wledButtonContainer.title = device.name;
         const wledButton = document.createElement("butotn");
-        wledButton.className = "wled-button";
+        wledButton.className = "button wled-button";
         wledButton.id = "wled_button_"+deviceIndex;
         const wledButtonIcon = document.createElement("i");
         wledButtonIcon.className = "fa fa-lightbulb-o";
