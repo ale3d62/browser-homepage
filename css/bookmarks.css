@@ -1,0 +1,123 @@
+#bookmark_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 50%;
+    margin: 1em 0em;
+}
+
+.bookmark-set {
+    padding: 1em;
+    background-color: var(--containerBg);
+    border-radius: 3px;
+    font-family: var(--fontFamily);
+    font-size: 0.85rem;
+    width: 25%;
+    height: 12em;
+    margin: 0em 0.5em;
+    box-sizing: border-box;
+}
+  
+  .bookmark-inner-container {
+    overflow-y: scroll;
+    height: 80%;
+    vertical-align: top;
+    padding-right: 6px;
+    box-sizing: border-box;
+  
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbarColor) #ffffff00;
+}
+
+.bookmark-inner-container::-webkit-scrollbar {
+    width: 6px;
+  }
+  .bookmark-inner-container::-webkit-scrollbar-track {
+    background: #ffffff00;
+  }
+  .bookmark-inner-container::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbarColor);
+    border-radius: 6px;
+    border: 3px solid #ffffff00;
+  }
+  
+  .bookmark-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--fg);
+    margin: 0em 0em 0.35em 0em;
+  }
+  
+  .bookmark {
+    text-decoration: none;
+    color: var(--secondaryFg);
+    display: block;
+    margin: 0.5em 0em;
+    transition: color 100ms ease-in-out;
+  }
+  .bookmark:hover {
+    color: var(--fg);
+    transition: color 100ms ease-in-out;
+  }
+
+
+/*BOOKMARKS*/
+.bookmark-button-set{
+    padding: 0em;
+    background-color: transparent;
+    font-size: 0.85rem;
+    width: 3em;
+    height: 12em;
+    margin: 0em 0.5em;
+    box-sizing: border-box;
+  }
+  
+  /*for the button at the top*/
+  .bookmark-top-button-container {
+    padding: 0.55em;
+    padding-top: 0.4em;
+    background-color: var(--containerBg);
+    border-radius: 3px;
+    font-family: var(--fontFamily);
+    font-size: 0.85rem;
+    width: 3em;
+    height: 3em;
+    box-sizing: border-box;
+  }
+  
+  .bookmark-button-container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--containerBg);
+    border-radius: 3px;
+    font-family: var(--fontFamily);
+    font-size: 0.85rem;
+    width: 3em;
+    height: 3em;
+    margin: 1.5em 0em 0em;
+    box-sizing: border-box;
+  }
+  
+  .bookmark-button{
+    border: none;
+    background-color: transparent;
+    font-size: 1.3rem;
+    color: var(--secondaryFg);
+    transition: color 100ms ease-in-out;
+  }
+  .bookmark-button:hover{
+    color: var(--fg);
+    cursor: pointer;
+    transition: color 100ms ease-in-out;
+  }
+  
+  /*EXTRA BOOKMARKS*/
+  .extra-bookmarks-container{
+    width: auto;
+    background-color: transparent;
+    font-size: 1rem;
+    position: relative;
+    top: 20%;
+    left: 0%;
+  }

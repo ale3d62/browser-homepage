@@ -1,0 +1,78 @@
+<!-- Popups -->
+<!-- extra bookmarks -->
+<div id="extra_bookmarks_popup" class="popup">
+    <div id="extra_bookmarks_popup_content" class="popup-content">
+        <button id="extra_bookmarks_popup_close_button" class="popup-close-button">
+            <i class='fa fa-close'></i>
+        </button>
+        <div id="extra_bookmarks_popup_title" class="popup-title">
+            Extra Bookmarks
+        </div>
+        <div id="extra_bookmarks_container" class="extra-bookmarks-container"></div>
+    </div>
+</div>
+<!-- wallpapers -->
+<div id="wallpapers_popup" class="popup">
+    <div id="wallpapers_popup_content" class="popup-content">
+        <button id="wallpapers_popup_close_button" class="popup-close-button">
+            <i class='fa fa-close'></i>
+        </button>
+        <div id="wallpapers_popup_title" class="popup-title">
+            Wallpapers
+        </div>
+        <div id="wallpapers_container" class="popup-inside-container">
+            <div class="text-option">
+                <div class="text-option-title">Wallpapers Route</div>
+                <input id="wallpapers_route" style="width: 35em;">
+                <button id="wallpapers_route_confirm_button" class="wallpapers-route-confirm-button">
+                    <i class="fa fa-check"></i>
+                </button>
+            </div>
+            <div id="wallpaper_thumbs_container" class="wallpaper-thumbs-container"></div>
+            <div class="checkbox-option">
+                <div class="checkbox-option-text">Wallpaper Cycling</div>
+                <input id="wallpaper_cycling_checkbox" type="checkbox">
+                <span><i class="fa fa-check"></i></span>
+            </div>
+            <div class="text-option">
+                <div class="text-option-title">Switch every</div>
+                <input id="wallpaper_cycling_time">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- settings -->
+<div id="settings_popup" class="popup">
+    <div id="settings_popup_content" class="popup-content">
+        <button id="settings_popup_close_button" class="popup-close-button">
+            <i class='fa fa-close'></i>
+        </button>
+        <div id="settings_popup_title" class="popup-title">
+            Settings
+        </div>
+        <div id="settings_container" class="popup-inside-container">
+            <div class="settings-section-title">Home-Server</div>
+            <div class="checkbox-option">
+                <div class="checkbox-option-text">Connect to Home-Server</div>
+                <input id="enable_server_checkbox" type="checkbox">
+                <span><i class="fa fa-check"></i></span>
+            </div>
+            <div class="text-option">
+                <div class="text-option-title">Home-Server Ip</div>
+                <input id="server_ip_option">
+            </div>
+            <div class="text-option">
+                <div class="text-option-title">Home-Server Port</div>
+                <input id="server_port_option">
+            </div>
+
+            <div class="settings-section-title">WLED
+                <button id="wled_add_button" class="wled-add-button">+</button>
+            </div>
+            <div id="wled_devices_container" class="wled-devices-container"></div>
+
+            <button id="save_settings_button" class="save-settings-button">Save</button>
+            <div id="save_confirm_text" class="save-confirm-text">Saved!</div>
+        </div>
+    </div>
+</div>

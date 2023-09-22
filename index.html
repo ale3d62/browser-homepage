@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!--jQuery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>Homepage</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/bottom_section.css" />
+    <link rel="stylesheet" href="css/bookmarks.css" />
+    <link rel="stylesheet" href="css/popups.css" />
+    <link href="favicon.png" rel="shortcut icon" type="image/x-icon" />
+  </head>
+
+  <body>
+    <div class="content">
+      <img id="wallpaper" class="wallpaper"></img>
+      <!--Search-->
+      <div id="search">
+        <input
+          id="search-field"
+          type="text"
+          name="search-field"
+          onkeypress="return search(event)"
+        />
+      </div>
+
+      
+      <div class="container">
+
+        <!--Clock and Weather-->
+        <div id="clock"></div>
+        <div class="weather-container">
+          <div class="row">
+            <div id="weather-description" class="inline"></div>
+            <div class="inline">-</div>
+            <div id="temp" class="inline"></div>
+          </div>
+        </div>
+
+        <!--LifeBar-->
+        <div class="life-bar-container">
+          <div id="life_bar_progress" class="life-bar-progress"></div>
+          <button id="life_bar_text" class="progress-text">Time flies by, don't waste it</button>
+          <div id="life_bar_percentaje_text" class="percentaje-text">93%</div>
+        </div>
+
+        <!--Bookmarks-->
+        <div id="bookmark_container"></div>
+
+        <!-- Bottom Section -->
+        <div class = "bottom-section">
+          <div class="bottom-container inline">
+            <div class="row">
+              <div id="todo_title" class="todo-title">
+                <p>
+                  <div id="todo_title_text" class="todo-title-text inline">
+                    To Do 📋
+                  </div>
+                  <button id="todo_add_button" class="todo-add-button">+</button>
+                </p>
+              </div>
+              <div id= "todo_rows">-</div>
+              
+            </div>
+            
+          </div>
+          <div class = "server-status-container inline">
+            <p id= "server_status_text" class = "server-status-text red">Server down</p>
+          </div>
+          <div id="wled_button_set" class = "wled-button-set"></div>
+        </div>
+      </div>
+
+      <!-- Popups -->
+      <!-- extra bookmarks -->
+      <div id="extra_bookmarks_popup" class="popup">
+        <div id="extra_bookmarks_popup_content" class="popup-content">
+            <button id="extra_bookmarks_popup_close_button" class="popup-close-button">
+                <i class='fa fa-close'></i>
+            </button>
+            <div id="extra_bookmarks_popup_title" class="popup-title">
+                Extra Bookmarks
+            </div>
+            <div id="extra_bookmarks_container" class="extra-bookmarks-container"></div>
+        </div>
+      </div>
+      <!-- wallpapers -->
+      <div id="wallpapers_popup" class="popup">
+        <div id="wallpapers_popup_content" class="popup-content">
+            <button id="wallpapers_popup_close_button" class="popup-close-button">
+                <i class='fa fa-close'></i>
+            </button>
+            <div id="wallpapers_popup_title" class="popup-title">
+                Wallpapers
+            </div>
+            <div id="wallpapers_container" class="popup-inside-container">
+                <div class="text-option">
+                    <div class="text-option-title">Wallpapers Route</div>
+                    <input id="wallpapers_route" style="width: 35em;">
+                    <button id="wallpapers_route_confirm_button" class="wallpapers-route-confirm-button">
+                        <i class="fa fa-check"></i>
+                    </button>
+                </div>
+                <div id="wallpaper_thumbs_container" class="wallpaper-thumbs-container"></div>
+                <div class="checkbox-option">
+                    <div class="checkbox-option-text">Wallpaper Cycling</div>
+                    <input id="wallpaper_cycling_checkbox" type="checkbox">
+                    <span><i class="fa fa-check"></i></span>
+                </div>
+                <div class="text-option">
+                    <div class="text-option-title">Switch every</div>
+                    <input id="wallpaper_cycling_time">
+                </div>
+            </div>
+        </div>
+      </div>
+      <!-- settings -->
+      <div id="settings_popup" class="popup">
+        <div id="settings_popup_content" class="popup-content">
+            <button id="settings_popup_close_button" class="popup-close-button">
+                <i class='fa fa-close'></i>
+            </button>
+            <div id="settings_popup_title" class="popup-title">
+                Settings
+            </div>
+            <div id="settings_container" class="popup-inside-container">
+                <div class="settings-section-title">Home-Server</div>
+                <div class="checkbox-option">
+                    <div class="checkbox-option-text">Connect to Home-Server</div>
+                    <input id="enable_server_checkbox" type="checkbox">
+                    <span><i class="fa fa-check"></i></span>
+                </div>
+                <div class="text-option">
+                    <div class="text-option-title">Home-Server Ip</div>
+                    <input id="server_ip_option">
+                </div>
+                <div class="text-option">
+                    <div class="text-option-title">Home-Server Port</div>
+                    <input id="server_port_option">
+                </div>
+
+                <div class="settings-section-title">WLED
+                    <button id="wled_add_button" class="wled-add-button">+</button>
+                </div>
+                <div id="wled_devices_container" class="wled-devices-container"></div>
+
+                <button id="save_settings_button" class="save-settings-button">Save</button>
+                <div id="save_confirm_text" class="save-confirm-text">Saved!</div>
+            </div>
+        </div>
+      </div>
+
+      <script src="js/bookmarks.js"></script>
+      <script src="js/popups.js"></script>
+      <script src="js/settings.js"></script>
+      <script src="js/todo.js"></script> 
+      <script src="js/wled.js"></script> 
+      <script src="js/wallpapers.js"></script>
+      <script>
+
+        const searchUrl = "https://google.com/search?q=";
+
+
+
+        // Search on enter key event
+        function search(e) {
+          if (e.keyCode == 13) {
+            var val = document.getElementById("search-field").value;
+            window.open(searchUrl + val);
+          }
+        }
+
+
+
+        // Get current time and format
+        function getTime() {
+          let date = new Date(),
+            min = date.getMinutes(),
+            sec = date.getSeconds(),
+            hour = date.getHours();
+
+          return (
+            "" +
+            (hour < 10 ? "0" + hour : hour) +
+            ":" +
+            (min < 10 ? "0" + min : min) +
+            ":" +
+            (sec < 10 ? "0" + sec : sec)
+          );
+        }
+
+
+        // Handle Weather request
+        function getWeather() {
+          let xhr = new XMLHttpRequest();
+          // Request to open weather map
+          xhr.open(
+            "GET",
+            "http://api.openweathermap.org/data/2.5/weather?id=2518207&units=metric&appid=e5b292ae2f9dae5f29e11499c2d82ece"
+          );
+          xhr.onload = () => {
+            if (xhr.readyState === 4) {
+              if (xhr.status === 200) {
+                let json = JSON.parse(xhr.responseText);
+                document.getElementById("temp").innerHTML =
+                  json.main.temp.toFixed(0) + " ºC";
+                document.getElementById("weather-description").innerHTML =
+                  json.weather[0].description;
+              } else {
+                console.log("error msg: " + xhr.status);
+              }
+            }
+          };
+          xhr.send();
+        }
+
+
+        function setupLifeBar(){
+          const birthDateStr = "05-08-2002";
+          const lifeExpentancyYearsStr = "80";
+          var currentDate = new Date();
+
+          //convert date data
+          var birthDay = parseInt(birthDateStr.split("-")[0], 10);
+          var birthMonth = parseInt(birthDateStr.split("-")[1], 10);
+          var birthYear = parseInt(birthDateStr.split("-")[2], 10);
+
+          var birthDate = new Date(birthYear, birthMonth, birthDay);
+          var lifeExpentancyYears = parseInt(lifeExpentancyYearsStr, 10);
+
+          //calculate percentaje
+          var timePassed = currentDate - birthDate;
+          var exactPercentaje = (timePassed / (lifeExpentancyYears* 365 * 24 * 60 * 60 * 1000)) * 100;
+
+          //round two decimals
+          var percentaje = Math.round((exactPercentaje + Number.EPSILON) * 100) / 100;
+
+          document.getElementById("life_bar_progress").style.width = percentaje+"%";
+          document.getElementById("life_bar_percentaje_text").innerText = percentaje+"%";
+
+          //hide text
+          const lifeBarText = document.getElementById("life_bar_text");
+          if (lifeBarTextState == "false")
+            lifeBarText.classList.toggle("hide"); 
+
+          lifeBarText.addEventListener("click", function(){
+            localStorage.setItem("lifeBarText", lifeBarText.classList.contains("hide"));
+            lifeBarText.classList.toggle("hide");
+          })
+        }
+
+
+        //HOTKEYS
+        $(document).keydown(function(e) {
+          if (e.key == 'Escape') {
+              // Esc to close search
+              document.getElementById("search-field").value = "";
+              document.getElementById("search-field").blur();
+              document.getElementById("search").style.display = "none";
+            }
+          if(e.target.nodeName != "INPUT"){
+            if (e.key == ' ') {
+            // Spacebar code to open search
+            document.getElementById("search").style.display = "flex";
+            document.getElementById("search-field").focus();
+            } 
+          }
+          
+        });
+        
+
+        window.onload = () => {
+          setupLifeBar();
+          getWeather();
+          // Set up the clock
+          document.getElementById("clock").innerHTML = getTime();
+          // Set clock interval to tick clock
+          setInterval(() => {
+            document.getElementById("clock").innerHTML = getTime();
+          }, 100);
+        };
+      </script>
+    </div>
+  </body>
+</html>
