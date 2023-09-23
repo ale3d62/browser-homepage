@@ -1,0 +1,63 @@
+/*LIFE-BAR*/
+.life-bar-container{
+  display: flex;
+  width: 38%;
+  height: 1.5em;
+  margin: 1em 0em 0em;
+  background-color: var(--containerBg);
+  border-radius: 3px;
+  font-family: var(--fontFamily);
+  color: var(--fg);
+  text-align: center;
+}
+
+.life-bar-progress{
+  left: 0;
+  height: 100%;
+  border-radius: 3px;
+  background-color: var(--secondaryFg);
+}
+
+.progress-text{
+  border:none;
+  background-color: transparent;
+  opacity: 1;
+  width: 100%;
+  font-size: 0.85rem;
+  color: var(--fg);
+  mix-blend-mode: difference;
+  transition: opacity 200ms ease-in-out;
+}
+.progress-text:hover{
+  cursor: pointer;
+}
+
+.progress-text.hide{
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+}
+
+
+.percentaje-text{
+  margin-top: 0.3%;
+  margin-left: -8%;
+  font-size: 0.85rem;
+  color: var(--fg);
+  mix-blend-mode: difference;
+}
+
+
+.button{
+  background-color: var(--inputBg);
+  color: var(--secondaryFg);
+  border-radius: 3px;
+  border: none;
+  transition: opacity 100ms ease-in-out,
+              color 100ms ease-in-out;
+}
+.button:hover{
+  background-color: var(--inputHoverBg);
+  color: white;
+  cursor:pointer;
+  transition: color 100ms ease-in-out;
+}

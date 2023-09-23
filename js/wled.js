@@ -104,18 +104,16 @@ async function setupWled(){
     wledDevices.forEach(device => {
         const deviceIndex = index;
         
-        const wledButtonContainer = document.createElement("div");
-        wledButtonContainer.className = "wled-button-container";
-        wledButtonContainer.title = device.name;
-        const wledButton = document.createElement("butotn");
-        wledButton.className = "button wled-button";
-        wledButton.id = "wled_button_"+deviceIndex;
-        const wledButtonIcon = document.createElement("i");
-        wledButtonIcon.className = "fa fa-lightbulb-o";
-        wledButton.appendChild(wledButtonIcon);
-        wledButtonContainer.appendChild(wledButton);
+        var html = "";
+        html+= "<div class='wled-button-container' title='"+device.name+"'>";
+        html+=  "<button id='wled_button_"+deviceIndex+"' class='button wled-button'>";
+        html+=      "<i class='fa fa-lightbulb-o'></i>";
+        html+=  "</button>"
+        html+= "</div>"
 
-        
+        wledButtonSet.innerHTML += html;
+
+        const wledButton = document.getElementById("wled_button_"+deviceIndex);
 
         wledButton.addEventListener("click", async function(){
             try{
@@ -133,8 +131,6 @@ async function setupWled(){
                 window.open("http://"+wledDevices[deviceIndex].ip,'_blank_');
             }
         })
-
-       wledButtonSet.appendChild(wledButtonContainer);
 
        index++;
     });

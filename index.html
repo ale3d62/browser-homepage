@@ -13,6 +13,7 @@
 
     <title>Homepage</title>
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/lifebar.css" />
     <link rel="stylesheet" href="css/bottom_section.css" />
     <link rel="stylesheet" href="css/bookmarks.css" />
     <link rel="stylesheet" href="css/popups.css" />
@@ -52,7 +53,7 @@
         <div class="life-bar-container">
           <div id="life_bar_progress" class="life-bar-progress"></div>
           <button id="life_bar_text" class="progress-text">Time flies by, don't waste it</button>
-          <div id="life_bar_percentaje_text" class="percentaje-text">93%</div>
+          <div id="life_bar_percentaje_text" class="percentaje-text"></div>
         </div>
 
         <!--Bookmarks-->
@@ -246,9 +247,11 @@
 
           //round two decimals
           var percentaje = Math.round((exactPercentaje + Number.EPSILON) * 100) / 100;
-
+          percentaje = 50;
           document.getElementById("life_bar_progress").style.width = percentaje+"%";
           document.getElementById("life_bar_percentaje_text").innerText = percentaje+"%";
+          document.getElementById("life_bar_text").style.marginLeft = "-"+percentaje+"%";
+          //modificar margin life_bar_percentaje_text ya que depende del width de life_bar_progress-------------------------------------------------------
 
           //hide text
           const lifeBarText = document.getElementById("life_bar_text");

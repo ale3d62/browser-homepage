@@ -89,17 +89,18 @@ function setupBookmarks() {
   //Buttons html
   html = "<div class='bookmark-button-set'>";
   //extra bookmarks button
-  html+= "<div class='bookmark-top-button-container'>";
-  html += "<button id='extra_bookmarks_button' class='button bookmark-button'><i class='fa fa-plus'></i></button>";
-  html+= "</div>"
+  html+=  "<div class='bookmark-top-button-container'>";
+  html+=    "<button id='extra_bookmarks_button' class='button bookmark-button'><i class='fa fa-plus'></i></button>";
+  html+=  "</div>"
   //wallpaper menu button
-  html+= "<div class='bookmark-button-container'>";
-  html += "<button id='wallpapers_button' class='button bookmark-button'><i class='fa fa-image'></i></button>";
-  html+= "</div>"
+  html+=  "<div class='bookmark-button-container'>";
+  html+=    "<button id='wallpapers_button' class='button bookmark-button'><i class='fa fa-image'></i></button>";
+  html+=  "</div>"
   //settings button
-  html+= "<div class='bookmark-button-container'>";
-  html += "<button id='settings_button' class='button bookmark-button'><i class='fa fa-gear'></i></button>";
-  html += "</div></div>";
+  html+=  "<div class='bookmark-button-container'>";
+  html+=    "<button id='settings_button' class='button bookmark-button'><i class='fa fa-gear'></i></button>";
+  html+=  "</div>";
+  html+= "</div>";
   bookmarkContainer.innerHTML += html;
 
   //Buttons functionality
