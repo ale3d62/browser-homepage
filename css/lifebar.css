@@ -11,53 +11,43 @@
   text-align: center;
 }
 
-.life-bar-progress{
-  left: 0;
+#life_bar_text{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#life_bar_progress{
   height: 100%;
   border-radius: 3px;
   background-color: var(--secondaryFg);
 }
 
-.progress-text{
-  border:none;
+#life_bar_message{
   background-color: transparent;
+  margin-left: auto;
+  border:none;
   opacity: 1;
-  width: 100%;
   font-size: 0.85rem;
   color: var(--fg);
   mix-blend-mode: difference;
   transition: opacity 200ms ease-in-out;
 }
-.progress-text:hover{
+#life_bar_message:hover{
   cursor: pointer;
 }
 
-.progress-text.hide{
+#life_bar_message.hide{
   opacity: 0;
   transition: opacity 200ms ease-in-out;
 }
 
 
-.percentaje-text{
+#life_bar_percentaje_text{
+  margin-left: auto;
   margin-top: 0.3%;
-  margin-left: -8%;
   font-size: 0.85rem;
   color: var(--fg);
   mix-blend-mode: difference;
-}
-
-
-.button{
-  background-color: var(--inputBg);
-  color: var(--secondaryFg);
-  border-radius: 3px;
-  border: none;
-  transition: opacity 100ms ease-in-out,
-              color 100ms ease-in-out;
-}
-.button:hover{
-  background-color: var(--inputHoverBg);
-  color: white;
-  cursor:pointer;
-  transition: color 100ms ease-in-out;
 }

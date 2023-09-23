@@ -101,6 +101,20 @@ body {
   display: inline-block;
 }
 
+.button{
+  background-color: var(--inputBg);
+  color: var(--secondaryFg);
+  border-radius: 3px;
+  border: none;
+  transition: opacity 100ms ease-in-out,
+              color 100ms ease-in-out;
+}
+.button:hover{
+  background-color: var(--inputHoverBg);
+  color: white;
+  cursor:pointer;
+  transition: color 100ms ease-in-out;
+}
 
 
 @media only screen and (max-width: 960px) {

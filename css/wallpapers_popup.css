@@ -4,7 +4,7 @@
 }
 
 
-.wallpaper-thumbs-container{
+#wallpaper_thumbs_container{
     border-radius: 3px;
     padding: 1em;
     background-color: var(--inputBg);
@@ -16,13 +16,13 @@
     scrollbar-width: thin;
     scrollbar-color: var(--scrollbarColor);
 }
-.wallpaper-thumbs-container::-webkit-scrollbar{
+#wallpaper_thumbs_container::-webkit-scrollbar{
     width: 6px;
 }
-.wallpaper-thumbs-container::-webkit-scrollbar-track{
+#wallpaper_thumbs_container::-webkit-scrollbar-track{
     background: #ffffff00;
 }
-.wallpaper-thumbs-container::-webkit-scrollbar-thumb{
+#wallpaper_thumbs_container::-webkit-scrollbar-thumb{
     background-color: var(--scrollbarColor);
     border-radius: 6px;
     border: 3px solid #ffffff00;

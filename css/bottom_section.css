@@ -25,6 +25,7 @@
     font-family: var(--fontFamily);
     color: var(--secondaryFg);
     text-align: center;
+    justify-content: center;
   }
   
   /* SERVER STATUS */
@@ -44,15 +45,15 @@
     align-items: center;
   }
   
-  .server-status-text{
+  #server_status_text{
     writing-mode: vertical-rl;
   }
   
-  .server-status-text.red{
+  #server_status_text.red{
     color:var(--serverRed);
   }
   
-  .server-status-text.green{
+  #server_status_text.green{
     color: var(--serverGreen);
   }
   
@@ -60,24 +61,32 @@
 
 
   /*TO DO*/
+  #todo_title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .todo-title-text {
+    margin-left: 5%; /*to center it properly*/
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--fg);
-    margin: 0em 0em 0.35em 0em;
+    margin-bottom: 0.35em;
   }
   
   .button.todo-add-button{
+    margin-left: 0.5em;
+    width: 1.5rem;
+    height: 1.5rem;
     opacity: 0;
-    font-size: 1.25rem;
-    border-radius: 10px;
+    font-size: 1rem;
+    border-radius: 15px;
   }
 
-  .todo-title:hover .todo-add-button{
-    visibility: visible;
+  #todo_title:hover .todo-add-button{
     opacity: 1;
-    transition: visibility 100ms ease-in-out,
-                opacity 100ms ease-in-out;
+    transition: opacity 100ms ease-in-out;
   }
   
   .todo-element-container{
@@ -125,7 +134,7 @@
   }
 
   /*WLED*/
-  .wled-button-set{
+  #wled_button_set{
     padding: 0em;
     background-color: transparent;
     font-size: 0.85rem;
