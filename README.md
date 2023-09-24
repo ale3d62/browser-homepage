@@ -1,6 +1,13 @@
-# [Homepage](https://danggoodcode.com/startpage)
+# Browser Homepage
+
+### [Original code by Jaredk3nt](https://github.com/Jaredk3nt/homepage)
 
 ![homepage](https://i.redd.it/cbnzq36zj3601.gif)
+
+## Settings Popup
+
+### HomeServer
+The proyect relies heavily on a [python script](https://github.com/ale3d62/homeServerAPI) running on my home server, which provides the homepage with all sorts of functions which are synced with my other devices at the same time.
 
 ## Customization
 
@@ -12,16 +19,17 @@ Bookmarks are now held in the `bookmarks.js` file for easy updating. `bookmarks`
 
 ### Customize Search Engine
 
-You can change the search engine used by the search overlay by updating the url value stored in the `searchUrl` var in `index.html` to the correct string for your engine.
+You can change the search engine used by the search overlay by updating the url value stored in the `searchUrl` var in `search.js` to the correct string for your engine.
 
 Examples:
 
+- Google: `https://google.com/search?q=`
 - DuckDuckGo: `https://duckduckgo.com/?q=`
 - Bing: `https://www.bing.com/search?q=`
 
 ### Customize Styling
 
-Styles are handled through CSS variables. To update the colors you just need to change the variable definitions defined in `:root`.
+Styles are handled through CSS variables. To update the colors you just need to change the variable definitions defined in `:root` at `styles.css`.
 
 | Variable           | default                    | description                                                                                                                |
 | ------------------ | -------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -31,4 +39,8 @@ Styles are handled through CSS variables. To update the colors you just need to 
 | `--containerBg`    | `#272727`                  | Defines the background color of the boxes                                                                                  |
 | `--searchBg`       | `--containerBg`            | Defines the background color of the search overlay                                                                         |
 | `--scrollbarColor` | `#3f3f3f`                  | Defines the color of the custom scrollbars                                                                                 |
+| `--inputBg`        | `#363636`                  | Defines the color of the input fields                                                                                      |
+| `--inputHoverBg`   | `#363636`                  | Defines the color when hovering the input fields                                                                           |
+| `--buttonBg`       | `--inputBg`                | Defines the color of the buttons background                                                                                |
+| `--buttonHoverBg`  | `--inputHoverBg`           | Defines the color of the buttons background when hovering                                                                  |
 | `--fontFamily`     | `"Roboto Mono", monospace` | Defines the font used. To change to a custom font you will also have to import that font from whatever source is available |
