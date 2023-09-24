@@ -1,3 +1,8 @@
+//have to make it so that thumbs stores both its source and the the original wallpaper's source, that or translate it every time
+//we want to set a new wallpaper since in the end, its one directory avobe
+
+//change collection id in homeserver
+
 async function setupWallpapers(){
     const wallpaperThumbsContainer = document.getElementById("wallpaper_thumbs_container");
     wallpaperThumbsContainer.innerHTML = "";
@@ -11,7 +16,7 @@ async function setupWallpapers(){
         const thumb = document.createElement("img");
         thumb.className = "thumb";
         thumb.classList.add("good");
-        thumb.src = wallpapersRoute+"/"+wallpaperNames[i];
+        thumb.src = wallpapersRoute+"/thumbs/"+wallpaperNames[i];
 
         //in case the wallpaper is missing locally
         thumb.onerror = function(){
@@ -55,6 +60,7 @@ async function getWallpaperNames(){
         wallpaperNames = [];
         console.error("[ERROR] getWallpaperNames() request failed")
     }
+    console.log("lenght: " + wallpaperNames.length);
     return wallpaperNames;
 }
 

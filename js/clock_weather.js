@@ -1,16 +1,3 @@
-const searchUrl = "https://google.com/search?q=";
-
-
-// Search on enter key event
-function search(e) {
-    if (e.keyCode == 13) {
-    var val = document.getElementById("search-field").value;
-    window.open(searchUrl + val);
-    }
-}
-
-
-
 // Get current time and format
 function getTime() {
     let date = new Date(),
