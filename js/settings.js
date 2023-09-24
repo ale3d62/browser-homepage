@@ -12,6 +12,9 @@ var lifeBarTextState;
 var wledDevices;
 var wallpapersRoute;
 var currentWallpaperName;
+var wallpaperCycling;
+var wallpaperCyclingTime;
+var wallpaperCyclingTimeUnit;
 loadValuesFromStorage();
 
 
@@ -22,8 +25,12 @@ function loadValuesFromStorage(){
     serverPort = localStorage.getItem("serverPort"); //port string
     lifeBarTextState = localStorage.getItem("lifeBarText"); // true or false string
     wledDevices = JSON.parse(localStorage.getItem("wledDevices")); //array of dictionaries: {"name": name, "ip": ip}
-    wallpapersRoute = localStorage.getItem("wallpapersRoute") //route string
-    currentWallpaperName = localStorage.getItem("currentWallpaperName") //wallpaper id
+    wallpapersRoute = localStorage.getItem("wallpapersRoute"); //route string
+    currentWallpaperName = localStorage.getItem("currentWallpaperName"); //wallpaper id
+    wallpaperCycling = localStorage.getItem("wallpaperCycling"); //true or false string
+    wallpaperCyclingTime = localStorage.getItem("wallpaperCyclingTime"); //time in seconds string
+    wallpaperCyclingTimeUnit = localStorage.getItem("wallpaperCyclingTimeUnit"); //option string
+    if(!wallpaperCyclingTimeUnit) wallpaperCyclingTimeUnit = "seconds"; //default value
 }
 
 

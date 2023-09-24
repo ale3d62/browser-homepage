@@ -59,6 +59,7 @@ async function getWallpaperNames(){
 }
 
 
+//Selects the wallpaper and sets it as the current one
 function selectWallpaper(thumb){
     //Change selected thumb
     selectedThumb = document.getElementsByClassName("selected");
@@ -78,6 +79,8 @@ function selectWallpaper(thumb){
     }, 100);
 }
 
+
+
 //load current wallpaper
 if(wallpapersRoute){
     document.getElementById("wallpaper").src = wallpapersRoute+"/"+currentWallpaperName;
@@ -85,3 +88,103 @@ if(wallpapersRoute){
 
 //setup wallpapers in popup
 setupWallpapers();
+
+
+
+//WALLPAPER CYCLING FUNCTIONALITY
+
+//set local values in html elements
+const wallpaperCyclingCheckbox = document.getElementById("wallpaper_cycling_checkbox");
+const wallpaperCyclingTimeInput = document.getElementById("wallpaper_cycling_time_input");
+const timeUnitSelect = document.getElementById("time_unit_select");
+
+wallpaperCyclingCheckbox.checked = wallpaperCycling == "true";
+wallpaperCyclingTimeInput.value = wallpaperCyclingTime;
+timeUnitSelect.value = wallpaperCyclingTimeUnit;
+
+
+//returns the cycling time in seconds, if its not set, returns null
+function getCyclingTime(){
+    var cyclingTime = parseInt(wallpaperCyclingTime);
+    if(cyclingTime){
+
+        //convert the time acording to timeUnit
+        if(wallpaperCyclingTimeUnit == "minutes") cyclingTime *= 60;
+        else if(wallpaperCyclingTimeUnit == "hours") cyclingTime*=3600;
+    }   
+    return cyclingTime;
+}
+
+
+//indicates if wallpaperCycler is currently running;
+var cycling = false;
+
+//waits for the cyclingTime and switches the wallpaper repeatedly
+//ends if wallCycling is disabled or if cycling time is not set
+async function wallpaperCycler(){
+    var cyclingTime = getCyclingTime();
+
+    while(wallpaperCycling=="true" && cyclingTime){
+        //sleep for the time set
+        await new Promise(r => setTimeout(r, cyclingTime*1000));
+
+        //get available wallpapers
+        var availableWallpapers = document.querySelectorAll("img:not(.selected):not(.missing)");
+        //pick a random and switch
+        const randomIndex = Math.floor(Math.random() * availableWallpapers.length);
+        const randomThumb = availableWallpapers[randomIndex];
+        selectWallpaper(randomThumb);
+
+        //update cycling time for the next iretation
+        cyclingTime = getCyclingTime();
+    }
+
+    cycling = false;
+}
+
+
+
+//returns true if cycling is enabled and a cycletime is set
+function checkForCycling(){
+    return (wallpaperCycling=="true" && parseInt(wallpaperCyclingTime));
+}
+
+
+
+//wallpaperCycler triggering
+
+//check at the start
+if(checkForCycling() && !cycling){
+    cycling = true;
+    wallpaperCycler();
+} 
+
+//check if input changes
+wallpaperCyclingCheckbox.addEventListener("change", function(){
+    //save value in localstorage
+    wallpaperCycling = wallpaperCyclingCheckbox.checked.toString();
+    localStorage.setItem("wallpaperCycling", wallpaperCycling);
+    
+    if(checkForCycling() && !cycling){
+        cycling = true;
+        wallpaperCycler();
+    } 
+});
+
+const wallpaperCyclingTimeConfirmButton = document.getElementById("wallpaper_cycling_time_confirm_button");
+wallpaperCyclingTimeConfirmButton.addEventListener('click', function(){
+    //animation
+    wallpaperCyclingTimeConfirmButton.classList.remove("wallpaper-cycling-time-confirm");
+    void wallpaperCyclingTimeConfirmButton.offsetWidth; // trigger reflow
+    wallpaperCyclingTimeConfirmButton.classList.add("wallpaper-cycling-time-confirm");
+    //save value in localstorage
+    wallpaperCyclingTime = wallpaperCyclingTimeInput.value;
+    wallpaperCyclingTime_unit = timeUnitSelect.value;
+    localStorage.setItem("wallpaperCyclingTime", wallpaperCyclingTime);
+    localStorage.setItem("wallpaperCyclingTime_unit", wallpaperCyclingTime_unit);
+
+    if(checkForCycling() && !cycling){
+        cycling = true;
+        wallpaperCycler();
+    } 
+});

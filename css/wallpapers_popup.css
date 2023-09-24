@@ -53,3 +53,20 @@
 .thumb.missing:hover{
     cursor:not-allowed;
 }
+
+#wallpaper_cycling_section{
+    display:flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.button.wallpaper-cycling-time-confirm{
+    font-size: 1rem;
+    margin-left: 5px;
+    animation: confirmed 2s;
+}
+
+@keyframes confirmed {
+    from {color: greenyellow; background-color: green;}
+    to {color: var(--fg); background-color: var(--inputBg);}
+}

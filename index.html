@@ -112,14 +112,24 @@
                       </button>
                   </div>
                   <div id="wallpaper_thumbs_container"></div>
-                  <div class="checkbox-option">
-                      <div class="checkbox-option-text">Wallpaper Cycling</div>
-                      <input id="wallpaper_cycling_checkbox" type="checkbox">
-                      <span><i class="fa fa-check"></i></span>
-                  </div>
-                  <div class="text-option">
-                      <div class="text-option-title">Switch every</div>
-                      <input id="wallpaper_cycling_time">
+                  <div id="wallpaper_cycling_section">
+                    <div class="checkbox-option">
+                        <div class="checkbox-option-text">Wallpaper Cycling</div>
+                        <input id="wallpaper_cycling_checkbox" type="checkbox">
+                        <span><i class="fa fa-check"></i></span>
+                    </div>
+                    <div class="text-option horizontal">
+                        <div class="text-option-title horizontal">Switch every</div>
+                        <input id="wallpaper_cycling_time_input">
+                        <select id="time_unit_select" class="select">
+                          <option value="seconds">Seconds</option>
+                          <option value="minutes">Minutes</option>
+                          <option value="hours">Hours</option>
+                        </select>
+                        <button id="wallpaper_cycling_time_confirm_button" class="button wallpaper-cycling-time-confirm">
+                          <i class="fa fa-check"></i>
+                        </button>
+                    </div>
                   </div>
               </div>
           </div>

@@ -133,3 +133,17 @@ body {
     margin: 1em 0em;
   }
 }
+
+.select{
+  font-size: 1rem;
+  border: none;
+  border-radius: 3px;
+  color: var(--fg);
+  background-color: var(--inputBg);
+  transition: background-color 100ms ease-in-out;
+}
+.select:hover{
+  background-color: var(--inputHoverBg);
+  cursor:pointer;
+  transition: background-color 100ms ease-in-out;
+}
