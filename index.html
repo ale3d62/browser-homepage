@@ -12,6 +12,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
     <title>Homepage</title>
+
+    <!--css-->
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/lifebar.css" />
     <link rel="stylesheet" href="css/bottom_section.css" />
@@ -25,7 +27,10 @@
 
   <body>
     <div class="content">
-      <img id="wallpaper" class="wallpaper"></img>
+
+      <!--background-->
+      <img id="wallpaper"></img>
+
       <!--Search-->
       <div id="search">
         <input
@@ -65,6 +70,7 @@
         <div class = "bottom-section">
           <div class="bottom-container inline">
             <div class="row">
+              <!--to do-->
               <div id="todo_title">
                 <div class="todo-title-text">
                   To Do 📋
@@ -74,9 +80,11 @@
               <div id="todo_rows"></div>
             </div>
           </div>
+          <!--server status-->
           <div class = "server-status-container inline">
             <p id= "server_status_text" class="red">Server down</p>
           </div>
+          <!--wled-->
           <div id="wled_button_set"></div>
         </div>
       
@@ -171,15 +179,18 @@
         </div>
       </div>
       
-      <script src="js/bookmarks.js"></script>
-      <script src="js/popups.js"></script>
+      <!--javascript-->
       <script src="js/settings.js"></script>
-      <script src="js/lifebar.js"></script>
-      <script src="js/todo.js"></script> 
-      <script src="js/wled.js"></script> 
-      <script src="js/wallpapers.js"></script>
+
+      <script src="js/search.js"></script>
       <script src="js/clock_weather.js"></script>
       <script src="js/hotkeys.js"></script>
+      <script src="js/lifebar.js"></script>
+      <script src="js/bookmarks.js"></script>
+      <script src="js/popups.js"></script>
+      <script src="js/wallpapers.js"></script>
+      <script src="js/todo.js"></script> 
+      <script src="js/wled.js"></script> 
     </div>
   </body>
 </html>

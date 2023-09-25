@@ -1,6 +1,11 @@
+//PARAMETERS
+//-----------------------------------
 const birthDateStr = "05-08-2002";
 const lifeExpentancyYearsStr = "80";
+//-----------------------------------
+
 var currentDate = new Date();
+
 
 //convert date data
 var birthDay = parseInt(birthDateStr.split("-")[0], 10);
@@ -27,11 +32,12 @@ document.getElementById("life_bar_percentaje_text").innerText = percentaje+"%";
 
 
 
-//hide text
+//hide lifebar message
 const lifeBarText = document.getElementById("life_bar_message");
 if (lifeBarTextState == "false")
-lifeBarText.classList.toggle("hide"); 
+    lifeBarText.classList.toggle("hide"); 
 
+//hide message by pressing on it
 lifeBarText.addEventListener("click", function(){
     localStorage.setItem("lifeBarText", lifeBarText.classList.contains("hide"));
     lifeBarText.classList.toggle("hide");

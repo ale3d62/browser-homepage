@@ -1,3 +1,6 @@
+//Gets the state of every wled device
+// each state is a dictionary composed of: brightness (ac), rgb color (cl), and effect index (fx)
+// if a request, that device's state will just be "error"
 async function getWledData(){
     var data = [];
 
@@ -18,44 +21,55 @@ async function getWledData(){
         }
         catch{
             data.push("error");
+            console.error("[ERROR] Error with request to wled:" + wledDevices[i].ip);
         }
     }
     
     return data;
 }
 
+
+
+//Turns on the wled corresponding to deviceIndex and updates the data list with its new state
+//- will throw an error if request fails
 async function turnOnWled(deviceIndex, data){
-    try{
-        const response = await fetch("http://"+wledDevices[deviceIndex].ip+"/win&T=2");
-        
-        if (!response.ok) {
-            throw new Error("Wled HTTP Error");
-        }
-        xmlText = await response.text();
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(xmlText, "text/xml");
-
-        // Accessing attributes
-        const acValue = xmlDoc.querySelector("ac").textContent;
-        const fxValue = xmlDoc.querySelector("fx").textContent;
-        const clValues = Array.from(xmlDoc.querySelectorAll("cl")).map((element) => element.textContent);
-
-        data[deviceIndex] = {"ac": acValue, "cl": clValues, "fx": fxValue};
-        return data;
-    } catch (error) {
-        throw error;
+    const response = await fetch("http://"+wledDevices[deviceIndex].ip+"/win&T=2");
+    
+    if (!response.ok) {
+        throw new Error("Error turning on wled:" + wledDevices[deviceIndex].ip);
     }
+    xmlText = await response.text();
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+
+    // Accessing attributes
+    const acValue = xmlDoc.querySelector("ac").textContent;
+    const fxValue = xmlDoc.querySelector("fx").textContent;
+    const clValues = Array.from(xmlDoc.querySelectorAll("cl")).map((element) => element.textContent);
+
+    data[deviceIndex] = {"ac": acValue, "cl": clValues, "fx": fxValue};
+    return data;
 }
 
+
+
+//Converts an rgb component value to hex
 function componentToHex(c) {
     var hex = c.toString(16);
     return hex.length == 1 ? "0" + hex : hex;
 }
   
+
+
+//Converts and rgb value to hex
 function rgbToHex(r, g, b) {
     return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
 
+
+
+//Increases a color component's value to make it brighter
+//the color component is received as a 0-255 integer
 function moreWhite(color){
     newColor = color + 60;
     if(newColor > 255) return 255;
@@ -64,15 +78,20 @@ function moreWhite(color){
 
 
 
+//Sets each wled device's button to its corresponding color
 async function setWledColor(devicesData){
     for(let i = 0; i<wledDevices.length; i++){
         if(devicesData[i] == "error"){
+            //if the device could not be connected, set the button as unavailable
             document.getElementById("wled_button_"+i).classList.add("unavailable");
         }
         else{
+            //base color and hoverColor
             var hexColor = "#141414";
             var secondHexColor = "#6b6b6b";
-            if(devicesData[i]['ac']!="0"){ //If the light is turned on
+
+            //if the light is turned on, set its color
+            if(devicesData[i]['ac']!="0"){ 
                 const r = parseInt(devicesData[i]['cl'][0]);
                 const g = parseInt(devicesData[i]['cl'][1]);
                 const b = parseInt(devicesData[i]['cl'][2]);
@@ -84,7 +103,9 @@ async function setWledColor(devicesData){
     }
 }
 
-//creates the wled buttons and assigns their colors
+
+
+//Creates the wled buttons and assigns their colors
 async function setupWled(){
     if(!wledDevices) return;
 
@@ -93,7 +114,7 @@ async function setupWled(){
         var devicesData = await getWledData();
     }
     catch(error){
-        console.error(error);
+        console.error("[ERROR]" + error);
     }
     
 
@@ -102,6 +123,7 @@ async function setupWled(){
 
     var index = 0;
     wledDevices.forEach(device => {
+
         const deviceIndex = index;
         
         var html = "";
@@ -115,17 +137,18 @@ async function setupWled(){
 
         const wledButton = document.getElementById("wled_button_"+deviceIndex);
 
+        //turning on device button functionality
         wledButton.addEventListener("click", async function(){
             try{
                 devicesData = await turnOnWled(deviceIndex, devicesData);
                 setWledColor(devicesData);
             }
             catch(error){
-                console.error(error);
+                console.error("[ERROR]" + error);
             }
-            
         });
 
+        //clicking the button with middle click witll open the device's control page
         wledButton.addEventListener("mousedown", function(event){
             if(event.button === 1){
                 window.open("http://"+wledDevices[deviceIndex].ip,'_blank_');
@@ -134,9 +157,16 @@ async function setupWled(){
 
        index++;
     });
+
     //set color
     setWledColor(devicesData);
     
 }
+
+
+
+
+
+
 
 setupWled();

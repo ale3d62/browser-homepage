@@ -1,39 +1,48 @@
-//have to make it so that thumbs stores both its source and the the original wallpaper's source, that or translate it every time
-//we want to set a new wallpaper since in the end, its one directory avobe
 
-//change collection id in homeserver
-
+//Sets up the wallpapers in wallpaper selector
 async function setupWallpapers(){
     const wallpaperThumbsContainer = document.getElementById("wallpaper_thumbs_container");
     wallpaperThumbsContainer.innerHTML = "";
 
-
+    //if wallpaperRoute is not set there are no wallpapers to setup
     if(!wallpapersRoute) return;
 
+    //get wallpaper names from home server
     const wallpaperNames = await getWallpaperNames();
 
+    //for each wallpaper name
     for(let i = 0; i<wallpaperNames.length; i++){
+
+        //create thumbnail element
         const thumb = document.createElement("img");
         thumb.className = "thumb";
         thumb.classList.add("good");
+        //path from the wallpapers thumbnail
         thumb.src = wallpapersRoute+"/thumbs/"+wallpaperNames[i];
 
-        //in case the wallpaper is missing locally
+        //path of the full-res wallpaper
+        const wallpaperPath = wallpapersRoute + "/" + wallpaperNames[i];
+
+        //if the wallpaper is missing locally set error img and missing class
         thumb.onerror = function(){
             thumb.src = "img_error.png";
             thumb.classList.remove("good");
             thumb.classList.add("missing");
         }
 
+        //set the current wallpaper's thumb as selected
         if(wallpaperNames[i] == currentWallpaperName && thumb.classList.contains("good")){
             thumb.classList.add("selected");
         }
     
+        //append thumb element to the container
         wallpaperThumbsContainer.appendChild(thumb);
     
+        //thumb click functionality
         thumb.onclick = function(){
+            //can only click good state unselected thumbs
             if(thumb.classList.contains("good") && ! thumb.classList.contains("selected")){
-                selectWallpaper(thumb);
+                selectWallpaper(thumb, wallpaperPath);
                 //save wallpaperName
                 localStorage.setItem("currentWallpaperName", wallpaperNames[i]);
             }
@@ -42,6 +51,7 @@ async function setupWallpapers(){
 }
 
 
+//Gets the wallpaper names from the server
 async function getWallpaperNames(){
     try{
         const serverResponse = await fetch("http://"+serverIp+":"+serverPort+"/getWallpapers",{
@@ -49,38 +59,41 @@ async function getWallpaperNames(){
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({wallhavenUsername: "ale3d62", wallhavenCollectionId: "1591884"})
+            body: JSON.stringify({wallhavenUsername: "ale3d62", wallhavenCollectionId: "1610358"})
         });
         const data = await serverResponse.json();
         if(! data.error)
             wallpaperNames = await data.wallpaperNames;
         else
             wallpaperNames = [];
+
     } catch (error) {
         wallpaperNames = [];
         console.error("[ERROR] getWallpaperNames() request failed")
     }
-    console.log("lenght: " + wallpaperNames.length);
+
     return wallpaperNames;
 }
 
 
+
 //Selects the wallpaper and sets it as the current one
-function selectWallpaper(thumb){
+function selectWallpaper(thumb, wallpaperPath){
+
     //Change selected thumb
     selectedThumb = document.getElementsByClassName("selected");
     if(selectedThumb.length == 1){
         const previousThumb = selectedThumb[0];
         previousThumb.classList.remove("selected");
-    
     }
     thumb.classList.add("selected");
 
     //Change wallpaper
     const wallpaper = document.getElementById("wallpaper");
+        //transition
     wallpaper.style.opacity = 0;
     setTimeout(() => {
-        wallpaper.src = thumb.src;
+        wallpaper.src = wallpaperPath;
         wallpaper.style.opacity = 1;
     }, 100);
 }

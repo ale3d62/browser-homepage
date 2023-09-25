@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 
+
+/*Colors (Reference at Readme.md)*/
 :root {
   --bg: #2f3437;
   --fg: #ffffff;
@@ -22,7 +24,7 @@ body {
   overflow: hidden;
 }
 
-.wallpaper{
+#wallpaper{
   filter: blur(2px)
           brightness(90%);
   object-fit: cover;

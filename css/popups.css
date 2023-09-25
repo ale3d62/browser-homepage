@@ -9,18 +9,6 @@
     box-sizing: border-box;
   }
   
-  /*for the button at the top*/
-  .bookmark-top-button-container {
-    padding: 0.55em;
-    padding-top: 0.4em;
-    background-color: var(--containerBg);
-    border-radius: 3px;
-    font-family: var(--fontFamily);
-    font-size: 0.85rem;
-    width: 3em;
-    height: 3em;
-    box-sizing: border-box;
-  }
   
   .bookmark-button-container {
     display:flex;
@@ -28,22 +16,22 @@
     align-items: center;
     background-color: var(--containerBg);
     border-radius: 3px;
-    font-family: var(--fontFamily);
     font-size: 0.85rem;
     width: 3em;
     height: 3em;
     margin: 1.5em 0em 0em;
     box-sizing: border-box;
   }
+
+  /*for the button at the top*/
+  .bookmark-button-container.top{
+    margin: 0em 0em 0em;
+  }
   
   .button.bookmark-button{
     font-size: 1.3rem;
     background: transparent;
   }
-  .button.bookmark-button:hover{
-    background: transparent;
-  }
-
 
 
 
@@ -114,7 +102,7 @@
     right: 0.5em;
 }
 .button.popup-close:hover{
-    color: white;
+    color: var(--fg);
 }
   
 .popup-title{
@@ -134,7 +122,7 @@
 }
 
 .checkbox-option-text{
-    color: white;
+    color: var(--fg);
     font-size: 1rem;
     position: relative;
 
@@ -150,7 +138,7 @@
     width: 1.5em;
     height: 1.5em;
     appearance: none;
-    border: 2px solid white;
+    border: 2px solid var(--fg);
     border-radius: 2px;
     background-color: transparent;
     cursor:pointer;
@@ -166,7 +154,7 @@
     top: -4px;
     left: 1px;
     position: absolute;
-    color: white;
+    color: var(--fg);
 }
 
 .checkbox-option input:checked ~ span{

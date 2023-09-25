@@ -1,4 +1,5 @@
-// Note: having length != 4 will mess with layout based on how the site is styled
+// Note: having length != 4 (+1 for extras) will mess with layout based on how the site is styled
+// The bookmarks in the "Extras" section will appear in the extra-bookmarks popup
 const bookmarks = [
   {
     title: "Personal",
@@ -61,10 +62,11 @@ function setupBookmarks() {
   const bookmarkContainer = document.getElementById("bookmark_container");
   const extraBookmarksContainer = document.getElementById("extra_bookmarks_container");
   
-    
+  //inject html
   var html = "";
   var extraBookmarksHtml = "";
 
+  //for each bookmark
   for(const [i, bookmarkType] of bookmarks.entries()){
     if(bookmarkType['title'] != "Extras"){
       html+= "<div class='bookmark-set'>";
@@ -89,7 +91,7 @@ function setupBookmarks() {
   //Buttons html
   html = "<div class='bookmark-button-set'>";
   //extra bookmarks button
-  html+=  "<div class='bookmark-top-button-container'>";
+  html+=  "<div class='bookmark-button-container top'>";
   html+=    "<button id='extra_bookmarks_button' class='button bookmark-button'><i class='fa fa-plus'></i></button>";
   html+=  "</div>"
   //wallpaper menu button
@@ -102,11 +104,6 @@ function setupBookmarks() {
   html+=  "</div>";
   html+= "</div>";
   bookmarkContainer.innerHTML += html;
-
-  //Buttons functionality
-  document.getElementById("extra_bookmarks_button").addEventListener("click", function(){openPopup("extra_bookmarks_popup_content")});
-  document.getElementById("wallpapers_button").addEventListener("click", function(){openPopup("wallpapers_popup_content")});
-  document.getElementById("settings_button").addEventListener("click", function(){openPopup("settings_popup_content")});
 }
 
 setupBookmarks();

@@ -1,87 +1,72 @@
-
-//Create a line for each todo
-const todo_rows = document.getElementById("todo_rows");
-createTodoList();
-
-//add button behavior
-var addingElement = false;
-document.getElementById("todo_add_button").addEventListener("click", function(){
-    if(!addingElement){
-        const elementTextInput = createInputElement("");
-        todo_rows.appendChild(elementTextInput);
-        elementTextInput.focus();     
-    }
-})
-
-
-//deletes the todo only from the server
+//Deletes the todo only from the server
+//does not return anything
+//- will throw an error if HomeServer request fails
 async function deleteTodoServerElement(elementText){
-    try{
-        const response = await fetch("http://"+serverIp+":"+serverPort+"/deleteTodoListItem",{
-            method:'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({'itemText': elementText})
-        });
-        
-        if (!response.ok) {
-            throw new Error("Error en la solicitud HTTP");
-        }
-    } catch (error) {
-        throw error;
+    const response = await fetch("http://"+serverIp+":"+serverPort+"/deleteTodoListItem",{
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({'itemText': elementText})
+    });
+    
+    if (!response.ok) {
+        throw new Error("Error in deleteTodoListItem() request");
     }
 }
 
-//edits the todo only from the server
+//Edits the todo only from the server
+//does not return anything
+//- will throw an error if HomeServer request fails
 async function editTodoServerElement(elementText, newElementText){
-    try{
-        const dataToSend = {'itemText': elementText, 'itemNewText': newElementText}
-        const response = await fetch("http://"+serverIp+":"+serverPort+"/editTodoListItem",{
-            method:'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(dataToSend)
-        });
-        
-        if (!response.ok) {
-            throw new Error("Error en la solicitud HTTP");
-        }
-    } catch (error) {
-        throw error;
+    const dataToSend = {'itemText': elementText, 'itemNewText': newElementText}
+    const response = await fetch("http://"+serverIp+":"+serverPort+"/editTodoListItem",{
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dataToSend)
+    });
+    
+    if (!response.ok) {
+        throw new Error("Error in editTodoListItem request");
     }
 }
 
 
-//adds the todo to the server
+//Adds the todo to the server
+//does not return anything
+//- will throw an error if HomeServer request fails
 async function addTodoServerElement(elementText){
-    try{
-        const response = await fetch("http://"+serverIp+":"+serverPort+"/addTodoListItem",{
-            method:'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({'itemText': elementText})
-        });
-        
-        if (!response.ok) {
-            throw new Error("Error en la solicitud HTTP");
-        }
-    } catch (error) {
-        throw error;
+    const response = await fetch("http://"+serverIp+":"+serverPort+"/addTodoListItem",{
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({'itemText': elementText})
+    });
+    
+    if (!response.ok) {
+        throw new Error("Error in addTodoListItem request");
     }
 }
 
 
-//returns a todo input element
+//Returns a todo input element
 function createInputElement(inputText){
+
+    //lock user from adding more elements
     addingElement = true;
+
     const elementTextInput = document.createElement("input");
     elementTextInput.className = "todo-input";
     elementTextInput.value = inputText;
     elementTextInput.focus();
+
+    //pressing enter or escape behaviour
     elementTextInput.onkeydown = function(e){
+
+        //enter creates the to do element
         if(e.key === 'Enter'){
             newTodoElement = createTodoElement(elementTextInput.value);
             
@@ -94,6 +79,8 @@ function createInputElement(inputText){
                 editTodoServerElement(inputText, elementTextInput.value);
             }
         }
+        
+        //escape cancels the operation, deleting the input
         if(e.key === 'Escape'){
             if(inputText == ""){
                 elementTextInput.remove();
@@ -101,14 +88,18 @@ function createInputElement(inputText){
             else{
                 elementTextInput.replaceWith(createTodoElement(inputText));
             }
+            addingElement = false;
         }
     }
     return elementTextInput;
-    
 }
 
 //returns a todo element div
+//that div can have an already set text via the todoElementText paramamater
+//- will throw an error if HomeServer request fails
 function createTodoElement(todoElementText){
+
+    //create html elements for the element
     const todoRowDiv = document.createElement("div");
     todoRowDiv.id = todoElementText+"_container";
     todoRowDiv.className = "todo-element-container";
@@ -165,7 +156,7 @@ function createTodoElement(todoElementText){
         deleteButton.classList.add('todo-element-button');
     })
 
-    
+    //append html elements to todoRowDiv
     todoRowDiv.appendChild(deleteButton);
     todoRowDiv.appendChild(editButton);
     todoRowDiv.appendChild(todoRowText);
@@ -175,35 +166,36 @@ function createTodoElement(todoElementText){
 
 
 
-//Get the todos from server
+//Get the to do list from server
+//- will throw an error if request fails
 async function getServerTodos(){
-    try{
-    const response = await fetch("http://"+serverIp+":"+serverPort+"/getTodoList",{
-        method:'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({})
-    });
+        const response = await fetch("http://"+serverIp+":"+serverPort+"/getTodoList",{
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({})
+        });
     
-    if (!response.ok) {
-        throw new Error("Error en la solicitud HTTP");
-    }
+        if (!response.ok) {
+            throw new Error("Error in getServerTodos() resquest");
+        }
 
-    const data = await response.json();
-    return data.todoList;
-    } catch (error) {
-        throw error;
-    }
+        const data = await response.json();
+        return data.todoList;
 }
 
 
-//gets and updates the server status and creates the todoList
+//creates the todoList and updates the server status container
+//this is made to save one server request
 async function createTodoList(){
     const server_status_text = document.getElementById("server_status_text");
     try{
+
+        //get to do list from server
         var todoList = await getServerTodos();
 
+        //integrate to do list in html
         if(todoList.length > 0){
             todo_rows.innerHTML = ''
             todoList.forEach(todoElementText => {
@@ -211,13 +203,34 @@ async function createTodoList(){
                     todo_rows.appendChild(newTodoElement);
             });
         }
-        //update serverstatus text
+
+
+        //update serverstatus text (server up)
         server_status_text.innerText = "Server Up";
         server_status_text.className = "server-status-text green";
     }catch(error){
-        //update serverstatus text
+        //update serverstatus text (server down)
         server_status_text.innerText = "Server Down";
         server_status_text.className = "server-status-text red";
         console.log("[ERROR]: ", error)
     };
 }
+
+
+
+//Create a line for each to do
+const todo_rows = document.getElementById("todo_rows");
+createTodoList();
+
+//to do add button behavior
+
+    //to prevent user from adding more than one to do at the same time
+var addingElement = false;
+
+document.getElementById("todo_add_button").addEventListener("click", function(){
+    if(!addingElement){
+        const elementTextInput = createInputElement("");
+        todo_rows.appendChild(elementTextInput);
+        elementTextInput.focus();     
+    }
+})
