@@ -15,6 +15,8 @@
   --buttonBg: var(--inputBg);
   --buttonHoverBg: var(--inputHoverBg);
   --fontFamily: 'Roboto Mono', monospace;
+
+  --searchCaret: #ffff00;
 }
 
 body {
@@ -62,33 +64,6 @@ body {
   margin-bottom: 0.25em;
 }
 
-#search {
-  z-index: 100;
-  width: 100%;
-  height: 100vh;
-  background-color: var(--containerBg);
-  display: none;
-  position: absolute;
-  box-sizing: border-box;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-#search-field {
-  width: 90%;
-  padding: 0.75em 1em;
-  box-sizing: border-box;
-  background-color: var(--searchBg);
-  border: solid 0px var(--searchBg);
-  font-family: var(--fontFamily);
-  font-size: 4rem;
-  color: var(--fg);
-  outline: none;
-  border-radius: 3px;
-  margin-bottom: 1em;
-  text-align: center;
-}
 
 .weather-container {
   width: 30%;
