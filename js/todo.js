@@ -147,7 +147,6 @@ function createTodoElement(todoElementText){
 
     //div hover detection
     todoRowDiv.addEventListener('mouseenter', function() {
-        console.log("hovered");
         editButton.classList.remove('todo-element-button');
         void editButton.offsetWidth; // trigger reflow
         editButton.classList.add('todo-element-button');
