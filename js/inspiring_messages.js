@@ -1,6 +1,5 @@
 const inspiringMessages = [
-    "Time flies by, dont waste it",
-    "Keep making",
-    "Keep improving",
-    "Allways grinding"
+    "msg1",
+    "msg2",
+    "msg3"
 ];
