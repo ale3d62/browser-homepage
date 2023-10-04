@@ -2,6 +2,7 @@
 //-----------------------------------
 const birthDateStr = "05-08-2002";
 const lifeExpentancyYearsStr = "80";
+const messageIndex = 0;
 //-----------------------------------
 
 var currentDate = new Date();
@@ -21,15 +22,14 @@ var exactPercentaje = (timePassed / (lifeExpentancyYears* 365 * 24 * 60 * 60 * 1
 
 //round two decimals
 var percentaje = Math.round((exactPercentaje + Number.EPSILON) * 100) / 100;
-//percentaje = 50;
+
 document.getElementById("life_bar_progress").style.width = percentaje+"%";
 document.getElementById("life_bar_text").style.marginLeft = "-"+percentaje+"%";
-//document.getElementById("life_bar_text").style.marginLeft = "-"+percentaje+"%";
 document.getElementById("life_bar_percentaje_text").innerText = percentaje+"%";
-//document.getElementById("life_bar_percentaje_text").style.marginLeft = "-"+percentaje+"%";
-//modificar margin life_bar_percentaje_text ya que depende del width de life_bar_progress-------------------------------------------------------
 
 
+//setup lifebar message
+document.getElementById("life_bar_message").innerText = inspiringMessages[messageIndex];
 
 
 //hide lifebar message
