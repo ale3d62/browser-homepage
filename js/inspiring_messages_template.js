@@ -5,3 +5,5 @@ const inspiringMessages = [
     "msg3",
     "msg4"
 ];
+
+const messageIndex = 0;

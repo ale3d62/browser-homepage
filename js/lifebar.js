@@ -2,7 +2,6 @@
 //-----------------------------------
 const birthDateStr = "05-08-2002";
 const lifeExpentancyYearsStr = "80";
-const messageIndex = 0;
 //-----------------------------------
 
 var currentDate = new Date();
