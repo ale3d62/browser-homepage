@@ -25,7 +25,7 @@ async function setupWallpapers(){
 
         //if the wallpaper is missing locally set error img and missing class
         thumb.onerror = function(){
-            thumb.src = "img_error.png";
+            thumb.src = "static/img_error.png";
             thumb.classList.remove("good");
             thumb.classList.add("missing");
         }

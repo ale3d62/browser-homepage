@@ -68,7 +68,6 @@
   }
 
   .todo-title-text {
-    margin-left: 5%; /*to center it properly*/
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--fg);
@@ -77,6 +76,7 @@
   
   .button.todo-add-button{
     margin-left: 0.5em;
+    margin-right: 0.5em;
     width: 1.5rem;
     height: 1.5rem;
     opacity: 0;

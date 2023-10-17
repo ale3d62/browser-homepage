@@ -1,2 +1,3 @@
 .DS_Store
-js/inspiring_messages.js
+static/js/inspiring_messages.js
+static/wallpapers
