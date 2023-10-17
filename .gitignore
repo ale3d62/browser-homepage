@@ -1,3 +1,5 @@
 .DS_Store
 static/js/inspiring_messages.js
 static/wallpapers
+__pycache__
+log.txt
