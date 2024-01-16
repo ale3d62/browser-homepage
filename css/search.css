@@ -40,7 +40,7 @@
   width: 3px;
   transition: transform 0.1s;
 
-  animation: blink 1s infinite;
+  animation: blink 1.3s infinite;
 }
 #search-field:focus ~ #search-caret{
   opacity: 1;

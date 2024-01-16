@@ -9,6 +9,7 @@
   --containerBg: #272727;
   --searchBg: var(--containerBg);
   --scrollbarColor: #3f3f3f;
+  --scrollbarHoverColor: #505050;
 
   --inputBg: #363636;
   --inputHoverBg: #404040;
