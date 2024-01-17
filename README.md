@@ -4,18 +4,25 @@
 
 ![homepage](https://i.redd.it/cbnzq36zj3601.gif)
 
-## Settings Popup
+## Extra Functionalities
+### Popups
+
+### Wled integration
 
 ### HomeServer
-The proyect relies heavily on a [python script](https://github.com/ale3d62/homeServerAPI) running on my home server, which provides the homepage with all sorts of functions which are synced with my other devices at the same time.
+The proyect relies heavily on a [python script](https://github.com/ale3d62/homeServerAPI) running on my home server, which provides the homepage with all sorts of extra functions, which are mostly based on synchronization with my other devices. Such a script is recommended, but not mandatory.
+The functionalities linked to this script are the following:
+
+ - ToDo list synced between all devices using the homepage
+ - 
 
 ## Customization
 
 ### Customize Bookmarks
 
-Bookmarks are now held in the `bookmarks.js` file for easy updating. `bookmarks` is an array of objects with a `title` and `links` property. The `title` defines what the header of the "bookmark section" box will be. `link` is an array of link objects each with a name and a url to link to.
+Bookmarks can be configured in the `bookmarks.js` file. `bookmarks` is an array of objects with a `title` and `links` property. The `title` defines what the header of the "bookmark section" box will be. `link` is an array of link objects each with a name and a url to link to.
 
-> The way the site is currently styled bookmarks should always have a length of `4` if you want to have more sections you need to change the `width` property of the css class `bookmark-set`
+> The way the site is currently styled, bookmarks should always have a length of `4`. If you want to have more sections, you need to change the `width` property of the css class `bookmark-set`
 
 ### Customize Search Engine
 
@@ -39,8 +46,10 @@ Styles are handled through CSS variables. To update the colors you just need to 
 | `--containerBg`    | `#272727`                  | Defines the background color of the boxes                                                                                  |
 | `--searchBg`       | `--containerBg`            | Defines the background color of the search overlay                                                                         |
 | `--scrollbarColor` | `#3f3f3f`                  | Defines the color of the custom scrollbars                                                                                 |
+| `--scrollbarHoverColor` | `#505050`             | Defines the color of the custom scrollbars when hovered                                                                    |
 | `--inputBg`        | `#363636`                  | Defines the color of the input fields                                                                                      |
 | `--inputHoverBg`   | `#363636`                  | Defines the color when hovering the input fields                                                                           |
 | `--buttonBg`       | `--inputBg`                | Defines the color of the buttons background                                                                                |
 | `--buttonHoverBg`  | `--inputHoverBg`           | Defines the color of the buttons background when hovering                                                                  |
 | `--fontFamily`     | `"Roboto Mono", monospace` | Defines the font used. To change to a custom font you will also have to import that font from whatever source is available |
+
