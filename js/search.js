@@ -10,11 +10,18 @@ const scheme = "https://";
 function search(e) {
     if (e.keyCode == 13) {
         var searchField = document.getElementById("search-field").value;
-        //Regex accepts urls without scheme or www, ej: github.com/username
-        var urlRegex = /^[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+(?:\/[^\s]*)?$/;
+        var urlRegex = /^(?:(?:(?:https?|ftp):)?\/\/)?(?:www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+(?:\/[^\s]*)?$/;
+        var schemeRegex = /^(?:(?:https?|ftp):\/\/)[^ "]+$/;
         //If its an url
         if(urlRegex.test(searchField)){
-            window.location.href = scheme + searchField;
+            //If url has a scheme
+            if(schemeRegex.test(searchField)){
+                window.location.href = searchField;
+            }
+            else{
+                window.location.href = scheme + searchField;
+            }
+            
         }
         else{
             window.location.href = scheme + searchUrl + searchField; 
