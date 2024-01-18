@@ -11,6 +11,7 @@ $(document).keydown(function(e) {
         // Spacebar code to open search
         document.getElementById("search").style.display = "flex";
         document.getElementById("search-field").focus();
-        } 
+        return false;
+        }  
     }
 });

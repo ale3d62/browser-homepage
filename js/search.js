@@ -1,16 +1,24 @@
-const searchUrl = "https://google.com/search?q=";
+const searchUrl = "google.com/search?q=";
 /*Other possible search engines:
-- DuckDuckGo: https://duckduckgo.com/?q=
-- Bing: https://www.bing.com/search?q=
+- DuckDuckGo: duckduckgo.com/?q=
+- Bing: bing.com/search?q=
 */
-
+const scheme = "https://";
 
 
 // Search on enter key event
 function search(e) {
     if (e.keyCode == 13) {
-    var val = document.getElementById("search-field").value;
-    window.open(searchUrl + val);
+        var searchField = document.getElementById("search-field").value;
+        //Regex accepts urls without scheme or www, ej: github.com/username
+        var urlRegex = /^[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+(?:\/[^\s]*)?$/;
+        //If its an url
+        if(urlRegex.test(searchField)){
+            window.location.href = scheme + searchField;
+        }
+        else{
+            window.location.href = scheme + searchUrl + searchField; 
+        }
     }
 }
 
