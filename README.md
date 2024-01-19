@@ -2,7 +2,7 @@
 
 ### [Original code by Jaredk3nt](https://github.com/Jaredk3nt/homepage)
 
-![homepage](https://github.com/ale3d62/browser-homepage/readmegif.gif)
+![homepage](https://github.com/ale3d62/browser-homepage/blob/local/readmegif.gif?raw=true)
 
 ## Extra Functionalities
 
