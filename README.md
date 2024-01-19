@@ -2,7 +2,7 @@
 
 ### [Original code by Jaredk3nt](https://github.com/Jaredk3nt/homepage)
 
-![homepage](https://i.giphy.com/SCB3YlzMHpR8Gg3mNT.webp)
+![homepage](https://github.com/ale3d62/browser-homepage/readmegif.gif)
 
 ## Extra Functionalities
 
