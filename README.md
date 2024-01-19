@@ -2,7 +2,7 @@
 
 ### [Original code by Jaredk3nt](https://github.com/Jaredk3nt/homepage)
 
-![homepage](https://i.redd.it/cbnzq36zj3601.gif)
+![homepage](https://i.giphy.com/SCB3YlzMHpR8Gg3mNT.webp)
 
 ## Extra Functionalities
 
