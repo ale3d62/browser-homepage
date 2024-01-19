@@ -7,17 +7,17 @@
 
 
 .bottom-section{
-
-    width: 40%;
+    display: flex;
+    width: 60%;
     background-color: transparent;
     box-sizing: border-box;
     border-radius: 3px;
     display: flex;
-  
+    justify-content: center;
   }
   
   .bottom-container {
-    width: 85%;
+    width: 40%;
     background-color: var(--containerBg);
     padding: 1em;
     border-radius: 3px;
@@ -75,18 +75,20 @@
   }
   
   .button.todo-add-button{
-    margin-left: 0.5em;
+    position: absolute;
+    display: none;
+    margin-left: 10em;
     margin-right: 0.5em;
     width: 1.5rem;
     height: 1.5rem;
     opacity: 0;
     font-size: 1rem;
     border-radius: 15px;
+    animation: display .5s forwards;
   }
 
   #todo_title:hover .todo-add-button{
-    opacity: 1;
-    transition: opacity 100ms ease-in-out;
+    display: block;
   }
   
   .todo-element-container{
@@ -135,10 +137,14 @@
 
   /*WLED*/
   #wled_button_set{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow-y: auto;
     padding: 0em;
     background-color: transparent;
     font-size: 0.85rem;
-    width: 4em;
     height: 12em;
     margin: 0em 0em;
     box-sizing: border-box;
@@ -154,7 +160,7 @@
     font-size: 0.85rem;
     width: 4em;
     height: 4em;
-    margin: 0em 0em 4em;
+    margin: 0em 1em 1em 0em;
     box-sizing: border-box;
   }
 

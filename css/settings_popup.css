@@ -14,7 +14,7 @@
 }
 
 
-#save_confirm_text{
+.save-confirm-text{
     opacity: 0;
     position: absolute;
     bottom: 0.4em;

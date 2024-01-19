@@ -187,7 +187,7 @@ wallpapersRouteConfirmButton.addEventListener("click", function(){
 const saveSettingsButton = document.getElementById("save_settings_button");
 saveSettingsButton.addEventListener("click", function(){
     saveSettings();
-
+    
     //show saved message
     const saveConfirmText = document.getElementById("save_confirm_text");
     saveConfirmText.classList.remove('save-confirm-text');

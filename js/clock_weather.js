@@ -4,7 +4,7 @@ function getTime() {
     min = date.getMinutes(),
     sec = date.getSeconds(),
     hour = date.getHours();
-
+    return "08:25:55";
     return (
     "" +
     (hour < 10 ? "0" + hour : hour) +
@@ -33,7 +33,7 @@ function getWeather() {
         document.getElementById("weather-description").innerHTML =
             json.weather[0].description;
         } else {
-        console.log("error msg: " + xhr.status);
+        console.log("[ERROR] " + xhr.status);
         }
     }
     };

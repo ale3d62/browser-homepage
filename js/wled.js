@@ -123,25 +123,31 @@ async function setupWled(){
 
     var index = 0;
     wledDevices.forEach(device => {
-
-        const deviceIndex = index;
         
         var html = "";
         html+= "<div class='wled-button-container' title='"+device.name+"'>";
-        html+=  "<button id='wled_button_"+deviceIndex+"' class='button wled-button'>";
+        html+=  "<button id='wled_button_"+index+"' class='button wled-button'>";
         html+=      "<i class='fa fa-lightbulb-o'></i>";
         html+=  "</button>"
         html+= "</div>"
 
         wledButtonSet.innerHTML += html;
 
-        const wledButton = document.getElementById("wled_button_"+deviceIndex);
+        index++;
+    });
 
+
+    for(let index = 0; index<wledDevices.length; index++){
+
+        const deviceIndex = index;
+        const wledButton = document.getElementById("wled_button_"+deviceIndex);
         //turning on device button functionality
         wledButton.addEventListener("click", async function(){
             try{
-                devicesData = await turnOnWled(deviceIndex, devicesData);
-                setWledColor(devicesData);
+                if(!wledButton.classList.contains("unavailable")){
+                    devicesData = await turnOnWled(deviceIndex, devicesData);
+                    setWledColor(devicesData);
+                }
             }
             catch(error){
                 console.error("[ERROR]" + error);
@@ -150,13 +156,12 @@ async function setupWled(){
 
         //clicking the button with middle click witll open the device's control page
         wledButton.addEventListener("mousedown", function(event){
-            if(event.button === 1){
+            if(event.button === 1 && !wledButton.classList.contains("unavailable")){
                 window.open("http://"+wledDevices[deviceIndex].ip,'_blank_');
             }
         })
+    }
 
-       index++;
-    });
 
     //set color
     setWledColor(devicesData);
