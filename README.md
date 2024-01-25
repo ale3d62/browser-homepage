@@ -2,20 +2,38 @@
 
 ### [Original code by Jaredk3nt](https://github.com/Jaredk3nt/homepage)
 
-![homepage](https://i.redd.it/cbnzq36zj3601.gif)
+![homepage](https://github.com/ale3d62/browser-homepage/blob/local/readmegif.gif?raw=true)
 
-## Settings Popup
+## Extra Functionalities
+
+### Search
+Search can be accessed by pressing the `spacebar`. It accepts both normal searches and direct url searches, just like a navigation bar of any browser would. Normal searches use a determined search engine that can be selected as explained in the [Customize Search Engine](#customize-search-engine) section.
+
+### Popups
+Three popup buttons have been added to the right of the `bookmarks`. The first one is used for `extra bookmarks` that the user may not want to be visible at all times, to include bookmarks in this section, check the [Customize Bookmarks](#customize-bookmarks) section.
+
+The other two popups are a `wallpaper selector`, and a `settings` popup, the wallpaper selector will be described further in the [HomeServer](#homeserver) section.
+
+### Wled integration
+The Homepage allows the integration of smart lighting devices using the [WLED](https://kno.wled.ge/) implementation. Devices can be added through the `settings` popup to then have a button where they can be individually turned on or off, as well as checking their current color.
 
 ### HomeServer
-The proyect relies heavily on a [python script](https://github.com/ale3d62/homeServerAPI) running on my home server, which provides the homepage with all sorts of functions which are synced with my other devices at the same time.
+The proyect relies heavily on a [python script](https://github.com/ale3d62/homeServerAPI) running on my home server, which provides the homepage with all sorts of extra functions, which are mostly based on synchronization with my other devices. Such a script is recommended, but not mandatory.
+
+The functionalities provided by this script are the following:
+
+ - `To do` list synced between all devices that are using the homepage
+ - `Wallpaper` syncing with [Wallhaven](https://wallhaven.cc/)
 
 ## Customization
 
 ### Customize Bookmarks
 
-Bookmarks are now held in the `bookmarks.js` file for easy updating. `bookmarks` is an array of objects with a `title` and `links` property. The `title` defines what the header of the "bookmark section" box will be. `link` is an array of link objects each with a name and a url to link to.
+Bookmarks can be configured in the `bookmarks.js` file. `bookmarks` is an array of objects with a `title` and `links` property. The `title` defines what the header of the "bookmark section" box will be. `link` is an array of link objects each with a name and a url to link to.
 
-> The way the site is currently styled bookmarks should always have a length of `4` if you want to have more sections you need to change the `width` property of the css class `bookmark-set`
+Bookmarks that are displayed in the Extra Bookmarks popup should be included in the "Extras" title array.
+
+> The way the site is currently styled, bookmarks should always have a length of `4`. If you want to have more sections, you need to change the `width` property of the css class `bookmark-set`
 
 ### Customize Search Engine
 
@@ -39,6 +57,7 @@ Styles are handled through CSS variables. To update the colors you just need to 
 | `--containerBg`    | `#272727`                  | Defines the background color of the boxes                                                                                  |
 | `--searchBg`       | `--containerBg`            | Defines the background color of the search overlay                                                                         |
 | `--scrollbarColor` | `#3f3f3f`                  | Defines the color of the custom scrollbars                                                                                 |
+| `--scrollbarHoverColor` | `#505050`             | Defines the color of the custom scrollbars when hovered                                                                    |
 | `--inputBg`        | `#363636`                  | Defines the color of the input fields                                                                                      |
 | `--inputHoverBg`   | `#363636`                  | Defines the color when hovering the input fields                                                                           |
 | `--buttonBg`       | `--inputBg`                | Defines the color of the buttons background                                                                                |
