@@ -1,6 +1,6 @@
 //PARAMETERS
 //-----------------------------------
-const birthDateStr = "05-08-1950";
+const birthDateStr = "05-08-2002";
 const lifeExpentancyYearsStr = "80";
 //-----------------------------------
 

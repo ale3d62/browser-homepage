@@ -4,7 +4,6 @@ function getTime() {
     min = date.getMinutes(),
     sec = date.getSeconds(),
     hour = date.getHours();
-    return "08:25:55";
     return (
     "" +
     (hour < 10 ? "0" + hour : hour) +
