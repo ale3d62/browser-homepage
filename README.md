@@ -7,7 +7,7 @@
 ## Extra Functionalities
 
 ### Search
-The search accepts both normal searches and direct url searches, just like a navigation bar of any browser would. Normal searches use a determined search engine that can be selected as explained in the [Customize Search Engine](#customize-search-engine) section.
+Search can be accessed by pressing the `spacebar`. It accepts both normal searches and direct url searches, just like a navigation bar of any browser would. Normal searches use a determined search engine that can be selected as explained in the [Customize Search Engine](#customize-search-engine) section.
 
 ### Popups
 Three popup buttons have been added to the right of the `bookmarks`. The first one is used for `extra bookmarks` that the user may not want to be visible at all times, to include bookmarks in this section, check the [Customize Bookmarks](#customize-bookmarks) section.
@@ -23,7 +23,7 @@ The proyect relies heavily on a [python script](https://github.com/ale3d62/homeS
 The functionalities provided by this script are the following:
 
  - `To do` list synced between all devices that are using the homepage
- - 
+ - `Wallpaper` syncing with [Wallhaven](https://wallhaven.cc/)
 
 ## Customization
 
