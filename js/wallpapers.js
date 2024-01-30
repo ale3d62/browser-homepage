@@ -104,6 +104,9 @@ function selectWallpaper(thumb, wallpaperPath){
 if(wallpapersRoute){
     document.getElementById("wallpaper").src = wallpapersRoute+"/"+currentWallpaperName;
 }
+else{
+    document.getElementById("wallpaper").src = "default_background.jpeg";
+}
 
 //setup wallpapers in popup
 setupWallpapers();
